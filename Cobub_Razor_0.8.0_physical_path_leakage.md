@@ -2,8 +2,8 @@
 ## This physical path Leakage exists in Western Bridge Cobub Razor 0.8.0 via a /index.php?/manage/channel/addchannel and /export.php request. ##
 
 The pages leaked the absolute path:  
-http://localhost/export.php  
-GET method  
+URL: http://localhost/export.php  
+Method: GET   
 Result:
 ```
 Notice: Undefined index: type in D:\phpStudy\PHPTutorial\WWW\export.php on line 22
@@ -19,8 +19,8 @@ Invalid type
 ```
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_lackage_1.png)  
 
-http://localhost/index.php?/manage/channel/addchannel  
-POST method:channel_name=test"&platform=1  
+URL: http://localhost/index.php?/manage/channel/addchannel  
+Method: POST:channel_name=test"&platform=1  
 Result:
 ```
 Error Number: 1064
