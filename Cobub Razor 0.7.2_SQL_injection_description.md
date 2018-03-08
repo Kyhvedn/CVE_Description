@@ -60,7 +60,8 @@ channel_name=test&platform=1%22
 
 ## Proof of Concept ##  
 
-The SQL injection type: error-based and AND/OR time-based blind
+The SQL injection type: error-based and AND/OR time-based blind  
+
 Parameter: channel_name,platform
 
 Payload(This string is also applied to 'platform' at the same time):  
