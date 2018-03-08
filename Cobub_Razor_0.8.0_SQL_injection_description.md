@@ -1,5 +1,5 @@
 
-## An SQL Injection vulnerability exists in Western Bridge Cobub Razor 0.7.2 via the channel_name and platform parameter in a /index.php?/manage/channel/addchannel request. ##  
+## An SQL Injection vulnerability exists in Western Bridge Cobub Razor 0.8.0 via the channel_name and platform parameter in a /index.php?/manage/channel/addchannel request. ##  
 
 Vendor Homepage : http://www.cobub.com/
 
