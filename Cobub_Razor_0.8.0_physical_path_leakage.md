@@ -16,6 +16,7 @@ Filename: D:\phpStudy\PHPTutorial\WWW\system\database\DB_driver.php
 
 Line Number: 331
 ```  
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_lackage_1.png)
 http://localhost/export.php  
 GET method  
 Result:
@@ -31,4 +32,4 @@ Notice: Undefined variable: ext in D:\phpStudy\PHPTutorial\WWW\export.php on lin
 Notice: Undefined variable: ext in D:\phpStudy\PHPTutorial\WWW\export.php on line 94
 Invalid type
 ```
-
+![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_lackage_2.png)
