@@ -76,7 +76,8 @@ SQLmap results:
 
 ## Update Content ##
 New discovery：
-1.SQL injection
+1.SQL injection  
+
 (1)http://localhost/index.php?/manage/channel/addsychannel  
 
 ```
